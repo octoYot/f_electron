@@ -1,0 +1,32 @@
+
+07/10/20
+1. Cannot use BLOC & EXPL commands at same time as can get an N=0 error in some blocked matrices.
+2. underflow when using EXPL command:
+   Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+
+10/09/18
+6. on console: 
+Transition matrix in basis:   0.41 secs
+Calculating transitions:      5.42 secs
+
+8. in experimental intensities number to identifiy if x,y,z,sum/3, and ED,MD,ED+MD
+
+9. Output intensities & compare to experiment.
+
+10. When listing energies in ED or MD intensity calculations, always relative 0, even if energies 
+not requested to be E0=0. (OPTN(1)=F)
+
+
+Bugs:
+
+Short-term:
+1) TODO: Plotoutput for spin & MJ for IRREPS
+2) Allow JO parameters to be formula
+
+Long-term/Hard:
+1) PLOTfile output needs to be finished & tested.
+2) Cannot use PREDiagonalisation during a fit.
+3) Full intensity parameterisation needs to be finished & tested.
+
+Long-term Maybe
+1) Allow x,y,z coordinates to be formula 

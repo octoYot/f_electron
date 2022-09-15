@@ -1,0 +1,240 @@
+Change Log
+version 1.54
+1. Fixed BlkiR/BlkiI references in parameters.f90
+
+
+version 1.53
+1. fix license update
+2. fix dimension error when using LF1E for d-electrons
+3. Fix underflow warnings in LF1E
+4. Make files GROUP.DAT, F_ELECTRON.DAT, D_ELECTRON.DAT, CCF.DAT optional depending on commands.
+5. Check for use of '=' in expression for parameter or constant. Throws fatal error.
+6. Check for non-zero constant/function. Usually because name of constant/fucntion isn't delimited by a space. 
+
+version 1.52
+1. Add FAST command, FAST(2) only one componant of Kramers doublet calculated for odd e- and at least C2(z) symmetry
+2. FAST(3) Regenerate other Kramers componant.
+3. Sign of beta in ROTL changed.
+4. Change plot commands (change PLOT to PLT1 & PLT2).
+5. Add assignments in EXPE based on Crystal quantum numbers, or spin quantum numbers.
+6. Add hidden options LANC, AOMX
+7. Corrected default options if N2, N3 left off command: "SYML T1 N2 N3"
+8. Added error handling in DECODE
+
+
+version 1.51
+1. Changed optn(10) to NU, GEXS N1 N2 n3
+2. The Hss spin-spin interactions (using the Mn parameters) not calculated for d systems. OPTN(5) ignored.
+3. Fix d-system no LF with BLOC
+4. Fixed reading integer formula, (eg 35*F4) as fortran format (changed * to '(A100)' )
+5. Added Reduction factors kx,ky,kz as 310-312 numbered parameters, moved Offset parameters to 351-400
+6. Fixed dimension error of ASSIGNed arrays that occurs with f7, BLOC & FIT simultaneous. 
+7. Fixed MJ blocking (atomic calulation) in PRED & BLOC simultaeous.
+8. For energy levels in ENGE that are weighted different from 1 are marked "x" (<1) or "+" (>1) in the output.
+9. Can now vary only Eave, without diagonalisation.
+10. Block info printed in output if "print CQN" requested (BLOC 1).
+11. MJ blocking set to 6 for fitting, to allow some speed-up for atomic calculations while limiting arrays sizes during fit. 
+
+
+Version 1.50
+1. Include CCF, delta model and general model. (NOT TESTED)
+2. Not necessary to have group.dat (if SYML not called),
+d_electron.dat (if CONF 2 n not used), CCF.dat (CCF not used).
+3. Option PRT*(10) to print a specified part of a matrix.
+4. Can fit Bkq by optimising Euler angles (ROTL).
+
+
+Version 1.48 (03/10/18)
+1. OPTN(5) = T means DON'T include Hss, ie default spin-spin coupling is included.
+2. Command line doc HELP updated.
+3. Appropriate error given if parameter given with no value.
+4. Lower limits now correctly shown if outside range
+5. Can now comment out the lines for parameters after FIT within the nFit lines.
+6. Command NLIG is now changed to AOM.
+7. Command LF1e has now been added.
+8. NPRMAT,NPRMULT,PRENG dimensions changed from 6 to 8.
+9. Changes in group.f90 to give correct irreps for OT (16/8/18)
+10. Now works for fitting g-values. (14/9/18)
+11. MFLD HX,Hy,Hz correctly assigned to parameters: 304,305,306 (12/4/18)
+12. max_exp=1000  ! maximum number of experimental energies that can be read (14/1/18)
+13. Free ion % long printed correctly (14/1/18)
+
+
+Version 1.46 (9/11/17)
+1. FitHard option added to FIT command.
+2. Fitting fixed for complex ligand fields.
+3. Add warning that EAVE has no effect is given when OPTN(1)=T (Energies relative to lowest)
+4. Implemented the VECT command.
+5. New OFFS command for PRED & full basis added.
+6. Can now skip lines & multiple lines, with ! not in col 1 for NLIG, EXPB,EXPE,EXPG 
+7. Values of LINKed parameters shown correctly in the output.
+8. CRNG command, and all code, removed.
+9. Changed PRED pre-diagonalisation code to use symmetry blocking.
+10. Move EAVE out of diagonalising routine and into SUBROUTINE ZeroE for fast fitting of EAVE only.
+
+
+
+version 1.45 (30/08/17)
+1. New coomand PRED to do calculation in a pre-diagonalised basis.
+2. New command EXSO to read in parameterisation is terms of Extended Steven's Operators
+3. New command EXPM to fit to EXSO matrix elements
+4. Anisotropic pi bonding now implemented.
+5. LIMS comamnd removed & new INTR command made for resetting the default values of internal parameters.
+6. BASE command changed to allow the explicit truncation of the basis, specifying a beginning & end 
+   of basis functions to be included.
+7. Change PRNG command to be able to print levels within a particular energy range or numbered range.
+8. Change OPTN so that FreeIon% and MJ% can have either short or long formats in the output.
+9. Corrected Magnetic Dipole applitudes when specified as Bohr Magneton.
+10. MJ symmetry blocking for atomic only parameters. Correct MJ ordering for EXSO calculation.
+
+version 1.41 (14/10/16)
+1. Group.dat Added roups C2Y(36) & CsY (37).
+2. 
+
+version 1.40 (14/9/16)
+1. Altp & Blki parameters now COMPLEX*16
+2. Standard order of parameters renumbered.
+3. Incorporated anisotropic pi bonding (untested)
+
+version 1.38 (6/7/16)
+1. New command EXPG to read experimental g-values.
+2. New command TEST to write batch test jobs to test program versions.
+
+version 1.37 (28/06/16)
+1. New command FITO to include the FIT options.
+2. F-electron.dat corrected for <||S4||> matrix elements.
+3. New command REDF (Orbital reduction factors) included.
+
+
+version 1.36 (30/05/16)
+1. Altp intensity parameters included.
+2. Parameter values rearrange.
+3. Internal checks for LF & Altp parameters to be consistent with symmetry.
+4. EDIP command enabled.
+5. Can make multiple assignments of calculated levels to an experimental energy/intensity.
+6. Add WARN command to switch warning flags for Bkq not symmetry consistent,
+and for Altp not symmetry consistent.
+7. MDIP command changed to N1-N4,N5
+8. Make Optional to include/fit experimental intensities as well as energies.
+9. Allow comments at end of line (after !) in multi line input CF,NLIG,ALTP,EXPE,EXPC
+10. Add date/time of when program run to output.
+
+
+version 1.35 (11/05/16)
+1. make PRNG work with JO calculation.
+2. Symmetry labelled calculated, when no MJ, S, gval requested.
+3. ROTL now runs correctly.
+4. MAGF can be expressed in terms of a variable equation, and therefore can be varied.
+5. Change VARI from R1 to R2 step R3 to be from R1 to R2 inclusive.
+6. Make PRNG restrict values given in the plotFile.
+7. S,MJ,g-values can be written to plotFile.
+8. magnetic field calculated correctly when symmetry blocking is used.
+9. Change max_ligands from 12 to 20.
+
+version 1.33 (6/04/16)
+1. Added "EXPC" command so that "experimental" CF values that can be fitted.
+2. Change "EXP " to "EXPE"
+3. Split f_e_readFile.f90 from f_e_input.f90
+4. Moved FUNCTION FACT(N) from group.f90 to wigner.f90 
+5. Moved getBbasis() from input.f90 to calculate.f90 
+
+version 1.32 (14/03/16)
+1. Added experimental intensities.
+2. Add weighting factors to Experimental data.
+3. Changed the JUDO command to fit the J-O parameters to spectra.
+
+version 1.31 (14/03/16)
+1. Add 2x2 GRID function, where the two variables to be made a grid can be chosen in the GRID command.
+2. Added new command XREF N1 N2 to define a new axis system using ligand positions N1 & N2.
+3. Added new command FACT to vary factor that the output to "matrix.dat" is divided by.  
+4. When OUTP(1) is true, the data of LML' angles are printed together with the L-L' distances.
+5. Corrected the use of Racah parameters B & C.
+6. Change JUDO to read from one line as described in the documentation.
+7. Changed BLOC command, a 1 after BLOC indicates the Crystal Q.N. are printed.
+8. Change the symmetry blocking to recognize the case for no min(q) (all B2q,B4q,B6q are zero);
+   This means there is no MJ mixing;  Put same as min(q)=6  
+9. Change so that the FNCR(7) option for wrong t2 matrix in complimentary configurations works to give incorrect answers
+   to agree with the calculations of Richardson et al. 
+
+
+version 1.30 (11/01/16)
+1. Add license file & date encryption.
+2. Correct calculation of B21' for d-orbitals.
+3. Correct out[put for Bkq' into plotfile.  
+
+version 1.28 (06/12/15)
+1. Add the ability to make fits of variables.
+2. Add the ability to make non-linear fits (eg vary angles).
+3. Make ECHO a basic command.
+4. Constants can be defined in terms of an algebraic expression.
+          CONS T1 acos(1/sqrt(3)) 
+5. Constants can be defined in terms of other constants.
+          CONS  Pi 4.0*atan(1.0)
+          CONS  trigonal  acos(1/sqrt(3))*180/pi  
+6. Parameters can be defined in terms of Constants and Variables, the 
+   Variables can be varied in a fit.
+
+version 1.27 (26/11/15)
+1. added Trees correction for d-electrons
+
+version 1.25 (13/5/15)
+1. Added usage log & expiry date.
+2. Fixed FIT to run with symmetry blocking.
+3. Added ^C termination that allows data to be saved.
+4. Changed EDIP command into JUDO.
+
+
+version 1.24 (4/5/15)
+1. Add equation parser. The values of parameters can now be expressed in terms of an abstract equation.
+2. "GRID", "VARI" commands added.
+3. "AOMF" command removed.
+4. rewrite help
+5. fixed bug with alpha,beta,gamma matrices.
+Total size: 11229 lines
+
+version 1.23 (21/4/15)
+1. Now runs for d-electrons.
+2. Allows IER parameters to be specified by either "B" and "C" Racah parameters or F2,F4.
+3. By default, the programs sets Mullikan/single groups for no SOC, Gamma/double groups for SOC. 
+4. Bug SYML works for O symmetry with SOC, but not without.(?)
+Total size: 8563 lines
+
+version 1.22 (22/3/15)
+1. option(1) T means energies are relative to the lowest.
+2. Re-ordering of the standard order of the Bkq' and the AOM parameters.
+3. Add the "FIT"* command to enable fitting of the parameters.
+4. Incorporate the correct simultaneous LINKing and FITting.
+5. Mark the FIT(*) and LINKed (L) parameters in the output. 
+6. Add constraints to fitted parameters.
+7. Use RESHAPE to dimension program for fitting of full matrices.
+8. Add covariance calculation for uncertainty in fitted values.
+Total size: 8492 lines
+
+version 1.20 (9/3/15)
+1. option(7) to print the MJ% of each wavefunction.
+2. option(8) to skip main calculation (for ie JO analysis only)
+3. Add "BLOC"* command to enable symmetry blocking using the crystal quantum numbers.
+
+version 1.19 (4/3/15)
+1. Add "AOMF"* command to scale the AOM parameters.
+2. Add "LINK"* command to link parameters.
+3. Remove the requirement of giving the (unused) B00 parameter.
+
+version 1.18 (6/2/15)
+1. "EDIP" command added. (for Judd-Ofelt intensities only).
+
+version 1.17 (6/2/15)
+1. The phase of the imaginary Bkq' have changed sign. 
+   This makes the orientation of the principal axes of the g-tensor follow the molecule correctly 
+   as the molecule is rotated. Molecule can be rotated explicitly (change geometry, Xi,Yi,Zi or Theta(i) phi(i))
+   or by using the ROTL command.   
+   
+version 1.16 (31/1/15) 
+1. "ROTL" command added to rotate the ligand field (molecule). 
+
+version 1.15 (20/1/15) 
+1. Calculates g-values by diagonalising the 3x3 g^2 matrix. Finds principal directions.
+2. "GEXS" command now requires 2 numbers, the beginning & end of range of Kramers doublets to calculate g-values.
+
+
+
