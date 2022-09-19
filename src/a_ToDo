@@ -1,4 +1,6 @@
-
+18/09/22
+***FATAL: f-electron calculation and could not find file:"f_electron.dat" in directory:                    
+Need a better message when F_E_PATH is not set
 07/10/20
 1. Cannot use BLOC & EXPL commands at same time as can get an N=0 error in some blocked matrices.
 2. underflow when using EXPL command:

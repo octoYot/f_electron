@@ -1,7 +1,7 @@
 Change Log
 version 1.54
 1. Fixed BlkiR/BlkiI references in parameters.f90
-
+2. Update documentation for EAVE and EXPL
 
 version 1.53
 1. fix license update
