@@ -1,0 +1,17 @@
+The f_electron program is run at the command prompt in Windows.
+f_e_32.exe is a 32bit executable compiled with gcc-6.3.0
+f_e_64.exe is a 64bit executable compiled with gcc-12.2.0
+Both should run under Win10 giving identical results with f_e_64 marginally faster.
+
+The executable should be in the same folder as the data files: f_electron.dat, d_electron.dat, group.dat
+An environment variable F_E_PATH should be defined as the directory where these files are.
+To set this (assuming that the directory where these files are is c:\f_electron): 
+>set F_E_PATH=c:\f_electron
+
+You should then be able to run the program in any working directory. 
+To run:
+>f_e input output
+
+To download the source code and the latest updates, goto https://github.com/octoYot/f_electron
+
+(C) Mark Riley, University of Queensland, m.riley@uq.edu.au
